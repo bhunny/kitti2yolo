@@ -41,10 +41,10 @@ with open('bbox.txt','r') as f:
         frame = elements[0]
         cameraID = elements[1]
         trackID = elements[2]
-        xmin = float(elements[3])
-        xmax = float(elements[4])
-        ymin = float(elements[5])
-        ymax = float(elements[6])
+        xmin = float(elements[3]) #left
+        xmax = float(elements[4]) #right
+        ymin = float(elements[5]) #top
+        ymax = float(elements[6]) #bottom
         # bbox = {
         #      "xmin":xmin,
         #      "xmax":xmax,
@@ -75,13 +75,13 @@ with open('bbox.txt','r') as f:
         #print(nom_bbox)
         #print(mapping_frame2img(frame))
         #line_buffer.append("{} {:.3f} {:.3f} {:.3f} {:.3f}".format(info_dict[trackID],nom_bbox["x"],nom_bbox["y"],nom_bbox["w"],nom_bbox["h"]))
-        line_test ="{} {:.3f} {:.3f} {:.3f} {:.3f}".format(info_dict[trackID],nom_bbox["x"],nom_bbox["y"],nom_bbox["w"],nom_bbox["h"])
+        line_output ="{} {:.3f} {:.3f} {:.3f} {:.3f}".format(info_dict[trackID],nom_bbox["x"],nom_bbox["y"],nom_bbox["w"],nom_bbox["h"])
         dir_name = os.path.join("frames","rgb","Camera_"+cameraID)#("labels", "Camera_"+frame)
         save_file_name =os.path.join(dir_name, "rgb_"+mapping_frame2img(frame)+".txt")
         print(save_file_name)
         if not(os.path.isdir(dir_name)):
             os.makedirs(os.path.join(dir_name))
-        print(line_test, file=open(save_file_name, 'a'))
+        print(line_output, file=open(save_file_name, 'a'))
         #save_file_name = os.path.join("labels.txt")
     #print("\n".join(line_buffer), file= open(save_file_name, 'w'))
 

@@ -7,3 +7,10 @@ main.spec
 vkitti_2.0.3_textgt.zip
 vkitti_2.0.3_textgt
 __pycache__
+*.txt
+test
+*.pyc
+*.spec
+*.zip
+*.tar
+*.gz
