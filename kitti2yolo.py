@@ -3,7 +3,7 @@ import cv2
 class_mapping = {
     'Car':0, 'Van':1, 'Truck':2,
                      'Pedestrian':3, 'Person_sitting':4, 'Cyclist':5, 'Tram':6,
-                     'Misc':7,'DontCare':8
+                     'Misc':7,'DontCare':7
 }
 # 파일 목록 읽어 오고 저장
 path = './'
@@ -54,6 +54,11 @@ def Convert(txt, file_value,image_w, image_h):
             #print(save_file_name)
             if not(os.path.isdir(dir_name)):
                 os.makedirs(os.path.join(dir_name))
+            #for python2
+            #f = open(save_file_name,'a')
+            #f.write(line_output+"\n")
+            #f.close()
+            #for python3
             print(line_output, file = open(save_file_name, 'a'))
 
 
