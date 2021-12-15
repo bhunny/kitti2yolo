@@ -1,3 +1,5 @@
+#-*-coding: utf8-*-
+
 import os
 import cv2
 class_mapping = {
@@ -6,7 +8,7 @@ class_mapping = {
                      'Misc':7,'DontCare':7
 }
 # 파일 목록 읽어 오고 저장
-path = './'
+path = './images'
 file_list = os.listdir(path)
 
 # png 이미지 리스트
@@ -29,7 +31,7 @@ def Convert(txt, file_value,image_w, image_h):
             xmax = float(right)
             ymin = float(top)
             ymax = float(bottom)
-            print(label+' '+str(class_mapping[label])+' '+left+' '+right+' '+top+' '+bottom)
+            #print(label+' '+str(class_mapping[label])+' '+left+' '+right+' '+top+' '+bottom)
 
             bbox = {
                 "x": (xmax + xmin) / 2,
@@ -43,8 +45,8 @@ def Convert(txt, file_value,image_w, image_h):
                 "w": bbox["w"] / image_w,
                 "h": bbox["h"] / image_h
             }
-            print(bbox)
-            print(nom_bbox)
+            #print(bbox)
+            #print(nom_bbox)
 
 
             line_output ="{} {:.3f} {:.3f} {:.3f} {:.3f}".format(class_mapping[label],nom_bbox["x"],nom_bbox["y"],nom_bbox["w"],nom_bbox["h"])
@@ -55,17 +57,16 @@ def Convert(txt, file_value,image_w, image_h):
             if not(os.path.isdir(dir_name)):
                 os.makedirs(os.path.join(dir_name))
             #for python2
-            #f = open(save_file_name,'a')
-            #f.write(line_output+"\n")
-            #f.close()
+            f = open(save_file_name,'a')
+            f.write(line_output+"\n")
+            f.close()
             #for python3
-            print(line_output, file = open(save_file_name, 'a'))
-
-
+            #print(line_output, file = open(save_file_name, 'a'))
+            #f.close()
 
 for png in png_list:
     # 이미지 파일 읽기
-    img = cv2.imread(png_list[0])
+    img = cv2.imread(path+"/"+png_list[0])
     image_w = img.shape[1]
     image_h = img.shape[0]
     file_value = png.split('.')
