@@ -1,8 +1,9 @@
 import os
 
 class_mapping = {"Car" : 0,
-                 "Van" : 1,
-                 "Truck": 2}
+                 "Van" : 1
+                 }
+                 #"Truck": 2}
 image_w = 1242
 image_h = 375
 
@@ -59,6 +60,7 @@ def Convert(txt, file_value):
             if not(os.path.isdir(dir_name)):
                 os.makedirs(os.path.join(dir_name))
             print(line_output, file = open(save_file_name, 'a'))
+
 for txt in txt_list:
     #print(txt) #0001_15-deg-left.txt
     file_value = txt.replace('.','_')
